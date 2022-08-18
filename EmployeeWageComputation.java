@@ -2,44 +2,52 @@ package com.bridgelabz.emp_wage10;
 
 public class EmployeeWageComputation {
 
+
 	public static final int isPartTime = 0;
 	public static final int isFullTime = 1;
 	public static final int empRatePerHour = 20;
+	public static final int numOfWorkingDay = 20;
 
 	public static void main(String[] args) {
-		calEmpWage();
+		calMonthlyEmpWage();
 	}
 
-	// Method to Calculate employee wage using switch case
-	public static void calEmpWage() {
+	// Method to Calculate Monthly employee wage
+	public static void calMonthlyEmpWage() {
 
 		// Variables
 		int empHour = 0;
 		int empWage = 0;
-		int empCheck =(int) Math.floor(Math.random() * 10 ) % 3;
+		int totalEmpWage = 0;
 
-		// Switch case statement
-		switch(empCheck) {
+		for(int i = 1;i <= numOfWorkingDay;i++) {
 
-		case isFullTime:
-			System.out.println("Employee is Full-Time !");
-			empHour = 8;
-			break;
+			int empCheck = (int) Math.floor(Math.random() * 10 ) % 3;
 
-		case isPartTime:
-			System.out.println("Employee is Part-Time !");
-			empHour = 4;
-			break;
+			// Switch case statement
+			switch(empCheck) {
 
-		default:
-			System.out.println("Employee is Absent !");
-			empHour = 0;
+			case isFullTime:
+				empHour = 8;
+				break;
+
+			case isPartTime:
+				empHour = 4;
+				break;
+
+			default:
+				empHour = 0;
+			}
+			// Calculation
+			empWage = empHour * empRatePerHour;
+			totalEmpWage += empWage;
+			System.out.println("\nEmployee Wage " +"Day "+i +" = " +empWage);
 		}
-		// Calculation
-		empWage = empHour * empRatePerHour;
-		System.out.println("\nEmployee Wage = " +empWage);
-	}
+		System.out.println("\nTotal Monthly Employee wage = " +totalEmpWage);
+	}	
 }
+
+
 
 
 	
