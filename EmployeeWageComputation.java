@@ -2,41 +2,47 @@ package com.bridgelabz.emp_wage10;
 
 public class EmployeeWageComputation {
 
-
-	static final int isPartTime = 0;
-	static final int isFullTime = 1;
-	static final int empRatePerHour = 20;
+	public static final int isPartTime = 0;
+	public static final int isFullTime = 1;
+	public static final int empRatePerHour = 20;
 
 	public static void main(String[] args) {
-		calculateEmployeeWage();
+		calEmpWage();
 	}
 
-	// Method to Calculate daily employee wage and added part-time employee
-	public static void calculateEmployeeWage() {
+	// Method to Calculate employee wage using switch case
+	public static void calEmpWage() {
 
 		// Variables
 		int empHour = 0;
 		int empWage = 0;
-		double empCheck = Math.floor(Math.random() * 10 ) % 3;
+		int empCheck =(int) Math.floor(Math.random() * 10 ) % 3;
 
-		if(empCheck == isFullTime) {
+		// Switch case statement
+		switch(empCheck) {
+
+		case isFullTime:
 			System.out.println("Employee is Full-Time !");
 			empHour = 8;
-		}
-		else if(empCheck == isPartTime) {
+			break;
+
+		case isPartTime:
 			System.out.println("Employee is Part-Time !");
 			empHour = 4;
-		}
-		else {
+			break;
+
+		default:
 			System.out.println("Employee is Absent !");
 			empHour = 0;
 		}
-
+		// Calculation
 		empWage = empHour * empRatePerHour;
 		System.out.println("\nEmployee Wage = " +empWage);
 	}
 }
 
+
+	
 	
 
 
